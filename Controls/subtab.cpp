@@ -1,13 +1,13 @@
 ﻿#include "subtab.h"
-#include "hzline.h"
+#include "line.h"
 
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QButtonGroup>
 #include <QSpacerItem>
 
-CSubTab::CSubTab(QWidget *parent,QString instName)
-    : BaseWidget(parent,instName),m_tabType(Root_Tab)
+CSubTab::CSubTab(QWidget *parent)
+    : BaseWidget(parent),m_tabType(Root_Tab)
     ,m_currentBtnIdx(-1)
     ,m_stretchLastType(None_Strecth)
 {
@@ -57,15 +57,15 @@ void CSubTab::setContentsMargins(int left, int top, int right, int bottom)
 
 void CSubTab::addLine(int w,int h)
 {
-    HZLine* pLine = new HZLine(Qt::Vertical);
+    Line* pLine = new Line(Qt::Vertical);
     pLine->setFixedWidth(w);
     if(h != -1)
-    pLine->setFixedHeight(h);
+        pLine->setFixedHeight(h);
     m_pMainLayout->addWidget(pLine);
     m_lineVec.push_back(pLine);
 }
 
-void CSubTab::addButton(const QString & name, const int  &id,HZLine* pLine)
+void CSubTab::addButton(const QString & name, const int  &id,Line* pLine)
 {
     QPushButton* spButton =  new QPushButton(this);
     spButton->setObjectName(name);
@@ -142,8 +142,8 @@ void CSubTab::setCurrentButton(const int &id)
     auto it = m_buttonMap.find(id);
     if(it != m_buttonMap.end())
         it.value()->setChecked(true);
-//    if(0<=id && id<  m_pButtonGroup->buttons().size())
-//        m_pButtonGroup->button(id)->setChecked(true);
+    //    if(0<=id && id<  m_pButtonGroup->buttons().size())
+    //        m_pButtonGroup->button(id)->setChecked(true);
 }
 
 void CSubTab::clear()
@@ -172,7 +172,7 @@ QPushButton *CSubTab::getButton(int nIndex)
     return NULL;
 }
 
-HZLine *CSubTab::getLine(int nIndex)
+Line *CSubTab::getLine(int nIndex)
 {
     if(m_lineMap.contains(nIndex))
     {
@@ -224,20 +224,3 @@ void CSubTab::switchForward()
 }
 
 
-CSubTabSecondBar::CSubTabSecondBar(QWidget *parent, QString instName):
-    CSubTab(parent,instName)
-{
-
-}
-
-CSubTabPeriod::CSubTabPeriod(QWidget *parent, QString instName):
-    CSubTab(parent,instName)
-{
-
-}
-
-CSubTabThirdBar::CSubTabThirdBar(QWidget *parent, QString instName):
-    CSubTab(parent,instName)
-{
-
-}

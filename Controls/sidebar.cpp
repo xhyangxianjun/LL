@@ -5,11 +5,11 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 
-#include "hzline.h"
-#include "micro.h"
+#include "line.h"
+//#include "micro.h"
 
-SideBar::SideBar(QWidget *parent ,QString instName)
-    :BaseWidget(parent,instName)
+SideBar::SideBar(QWidget *parent)
+    :BaseWidget(parent)
 {
     createWg();
 }
@@ -102,9 +102,9 @@ QToolButton *SideBar::addToolButton(const QIcon &icon,int id,const QString &text
     return toolButton;
 }
 
-HZLine *SideBar::addSeparator()
+Line *SideBar::addSeparator()
 {
-    HZLine *line =  new HZLine(Qt::Horizontal,this);
+    Line *line =  new Line(Qt::Horizontal,this);
     //添加水平分割线
     m_vLayout->addWidget(line);
     return line;

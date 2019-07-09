@@ -10,19 +10,19 @@ purpose:通用的侧边栏基类
 #include <QMap>
 
 #include "basewidget.h"
-#include "hzcontrols_global.h"
+#include "controls_global.h"
 
 class QButtonGroup;
 class QToolButton;
 class QVBoxLayout;
 class QAbstractButton;
-class HZLine;
+class Line;
 class QPushButton;
-class  HZCONTROLSSHARED_EXPORT SideBar : public  BaseWidget
+class  CONTROLSSHARED_EXPORT SideBar : public  BaseWidget
 {
     Q_OBJECT
 public:
-    SideBar(QWidget *parent = 0,QString instName="");
+    SideBar(QWidget *parent = 0);
     //检查指定Id是否是按下状态
     bool isCheck(int id);
     //获取当前按下按钮ID
@@ -34,7 +34,7 @@ public:
     QToolButton *addToolButton(QToolButton *toolButton,int id,const bool &addToGrp = true);
     QToolButton *addToolButton(const QString &text,int id,const bool &addToGrp = true,Qt::ToolButtonStyle toolButtonStyle= Qt::ToolButtonTextUnderIcon);
     QToolButton *addToolButton(const QIcon &icon,int id,const QString &text,const bool &addToGrp = true,Qt::ToolButtonStyle toolButtonStyle= Qt::ToolButtonTextUnderIcon);
-    HZLine *addSeparator();
+    Line *addSeparator();
 
     QPushButton *addLogo();
     void addStretch();

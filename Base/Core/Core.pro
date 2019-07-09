@@ -4,17 +4,28 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
+QT += core gui widgets network
 
 TARGET = Core
 TEMPLATE = lib
 
+include (../../common.pri)
+
 DEFINES += CORE_LIBRARY
 
-SOURCES += hostinfo.cpp
+SOURCES += hostinfo.cpp \
+    application.cpp \
+    dirhelper.cpp \
+    usermanager.cpp
 
 HEADERS += hostinfo.h\
-        core_global.h
+        core_global.h \
+     application.h \
+    Any.hpp \
+    Ioc.hpp \
+    NonCopyable.hpp \
+    dirhelper.h \
+    usermanager.h
 
 unix {
     target.path = /usr/lib

@@ -1,12 +1,4 @@
-﻿#pragma once
-/********************************************************************
-created:	五月 2016
-filename: 	Ioc.hpp
-author:     min.cheng
-purpose:	IOC容器,用于配置依赖关系,也是可复用的工厂方法,内容来自
-<<深入应用C++11>>,我增加了继承关系和普通对象的创建功能.
-*********************************************************************/
-#include <string>
+﻿#include <string>
 #include <unordered_map>
 #include <memory>
 #include <functional>

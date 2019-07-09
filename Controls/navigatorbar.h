@@ -1,12 +1,7 @@
-﻿/********************************************************************
-created:  2018/04/16
-author: min.cheng   dk.zhang
-purpose: 导航栏基类，提供添加行（最多两行）的功能，必须有主导航，次导航栏可选
-*********************************************************************/
-#ifndef NAVIGATORBAR_H
+﻿#ifndef NAVIGATORBAR_H
 #define NAVIGATORBAR_H
 
-#include "hzcontrols_global.h"
+#include "controls_global.h"
 #include "basewidget.h"
 #include <vector>
 #include <map>
@@ -27,15 +22,15 @@ struct NaviTableItem
 
 class QPushButton;
 class QVBoxLayout;
-class HZCONTROLSSHARED_EXPORT NavigatorBar : public BaseWidget
+class CONTROLSSHARED_EXPORT NavigatorBar : public BaseWidget
 {
     Q_OBJECT
 public:
-    explicit NavigatorBar(QWidget *parent = 0,QString instName="");
+    explicit NavigatorBar(QWidget *parent = 0);
 
     //添加导航条
     void addCSubTab(CSubTab *csubTab);
-    CSubTab *addCSubTab(CSubTab::CSubTabType = CSubTab::Root_Tab, QString instName=QString());
+    CSubTab *addCSubTab(CSubTab::CSubTabType = CSubTab::Root_Tab);
 
     void addButtonToTab(const int &id,const QString &text);
     void setSubTabButtons(const int &id,const QStringList &textList);
@@ -47,8 +42,6 @@ signals:
     void subTabSectionChanged(int id,int button);
 
 private slots:
-    void OnClickBack();
-
     void tabCurrentBtnChanged(const int &id);
 
 private:

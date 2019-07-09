@@ -3,6 +3,10 @@ TEMPLATE = subdirs
 #include(common.pri)
 
 SUBDIRS += \
+    Constants \
     Base \
     ThirdParty \
-    Main
+    Controls\
+    Main \
+
+

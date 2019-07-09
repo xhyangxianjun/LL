@@ -1,4 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    MwhrController
+   Core \
+    Network \
+    MwhrController \
+

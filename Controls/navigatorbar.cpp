@@ -5,8 +5,8 @@
 
 #include "subtab.h"
 
-NavigatorBar::NavigatorBar(QWidget *parent,QString instName):
-    BaseWidget(parent,instName)
+NavigatorBar::NavigatorBar(QWidget *parent):
+    BaseWidget(parent)
 {
     createWg();
 }
@@ -28,11 +28,10 @@ void  NavigatorBar::addCSubTab(CSubTab *csubTab)
     connect(csubTab,SIGNAL(currentButtonChanged(id)),this,SLOT(tabCurrentBtnChanged(int)));
 }
 
- CSubTab *NavigatorBar::addCSubTab(CSubTab::CSubTabType subTabType, QString instName)
+ CSubTab *NavigatorBar::addCSubTab(CSubTab::CSubTabType subTabType)
 {
-    CSubTab *csubTab = new CSubTab(this,instName);
-    csubTab->setObjectName(instName);
-    csubTab->setCSubTabType(subTabType);
+    CSubTab *csubTab = new CSubTab(this);
+     csubTab->setCSubTabType(subTabType);
     m_mainLayout->addWidget(csubTab);
     int mId =   m_csubTabs.size();
     m_csubTabs.insert(mId,csubTab);
@@ -78,7 +77,3 @@ void NavigatorBar::tabCurrentBtnChanged(const int &btnId)
     emit navigatorSectionChanged(priButton, secButon);
 }
 
-void NavigatorBar::OnClickBack()
-{
-    MsgBack();
-}

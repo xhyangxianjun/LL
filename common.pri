@@ -31,5 +31,10 @@ DLLDESTDIR = $$BIN_PATH
 }
 
 
+#全局的配置
+INCLUDEPATH +=  $$PWD\
+     $$SRC_ROOT/Constants
+
+
 
 

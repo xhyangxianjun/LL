@@ -1,4 +1,4 @@
-// IC卡控制器，接口
+﻿// IC卡控制器，接口
 #ifndef MWHRCONTROLLER_H
 #define MWHRCONTROLLER_H
 
@@ -6,12 +6,10 @@
 
 class MWHRCONTROLLERSHARED_EXPORT MwhrController
 {
-
 public:
     MwhrController();
 
     void startConnect();
-
 };
 
 #endif // MWHRCONTROLLER_H

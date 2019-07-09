@@ -1,21 +1,22 @@
 ﻿/********************************************************************
 created: 2018/04/13
-author: min.cheng dk.zhang
+author:  dk.zhang
 purpose:导航条，负责管理管理Buttons
 *********************************************************************/
 #ifndef CSUBTAB_H
 #define CSUBTAB_H
 
 #include <QMap>
-#include "hzcontrols_global.h"
+#include "controls_global.h"
 #include "basewidget.h"
 
 class QButtonGroup;
 class QPushButton;
 class  QHBoxLayout;
-class HZLine;
+class Line;
 class SwitchPanel;
-class HZCONTROLSSHARED_EXPORT CSubTab : public BaseWidget
+
+class CONTROLSSHARED_EXPORT CSubTab : public BaseWidget
 {
     Q_OBJECT
 public:
@@ -35,7 +36,7 @@ public:
     Q_ENUM(CSubTabType)
     Q_PROPERTY(CSubTabType csubTabType READ csubTabType WRITE setCSubTabType NOTIFY csubTypeChanged)
 
-    CSubTab(QWidget *parent = 0,QString instName="");
+    CSubTab(QWidget *parent = 0);
     ~CSubTab();
 
     void setCSubTabType(CSubTabType tabType) ;
@@ -50,7 +51,7 @@ public:
 
     //管理Button
     void addLine(int w,int h=-1);
-    void addButton(const QString & name, const int  &id= -1,HZLine* pLine = nullptr);
+    void addButton(const QString & name, const int  &id= -1,Line* pLine = nullptr);
     void addButtons(const QStringList &textList);
 
     void setButtons(const QStringList &textList);
@@ -66,7 +67,7 @@ public:
 
     QPushButton *getButton(int nIndex);
 
-    HZLine* getLine(int nIndex);
+    Line* getLine(int nIndex);
 
     void setAllUnCheck();
 
@@ -90,8 +91,8 @@ private:
     void  createWg();
 
 private:
-    QVector<HZLine*> m_lineVec;
-    QMap<int , HZLine*> m_lineMap;
+    QVector<Line*> m_lineVec;
+    QMap<int , Line*> m_lineMap;
     QMap<int , QPushButton*> m_buttonMap;
     QButtonGroup   * m_pButtonGroup;
     QHBoxLayout      *topHLayout;
@@ -102,33 +103,5 @@ private:
     StretchLastType  m_stretchLastType;
 };
 
-//二级导航TAB  每个页面顶部TAB样式
-class HZCONTROLSSHARED_EXPORT CSubTabSecondBar :public CSubTab
-{
-    Q_OBJECT
-public:
-    CSubTabSecondBar(QWidget *parent = 0,QString instName="");
 
-    ~CSubTabSecondBar(){}
-};
-
-//三级导航TAB 数据页面中部TAB 右侧盘口资金财务 行情列表底部资金基础行情选择TAB
-class HZCONTROLSSHARED_EXPORT CSubTabThirdBar :public CSubTab
-{
-    Q_OBJECT
-public:
-    CSubTabThirdBar(QWidget *parent = 0,QString instName="");
-
-    ~CSubTabThirdBar(){}
-};
-
-//周期相关 用于样式统一配置
-class HZCONTROLSSHARED_EXPORT CSubTabPeriod :public CSubTab
-{
-    Q_OBJECT
-public:
-    CSubTabPeriod(QWidget *parent = 0,QString instName="");
-
-    ~CSubTabPeriod(){}
-};
 #endif // CSUBTAB_H

@@ -13,9 +13,15 @@ TEMPLATE = app
 
 include(../common.pri)
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+message($$LIB_PATH)
 
-HEADERS  += mainwindow.h
+LIBS += -L$$LIB_PATH -lCore
+
+SOURCES += main.cpp\
+        mainwindow.cpp \
+    mainapplication.cpp
+
+HEADERS  += mainwindow.h \
+    mainapplication.h
 
 FORMS    += mainwindow.ui

@@ -5,6 +5,9 @@ SRC_ROOT = $$PWD
 BUILD_PATH = $$PWD/../build
 THIRPARTY_PATH = $$PWD/ThirdParty
 
+
+BASE_SRC_PATH =  $$SRC_ROOT/Base
+
 #依赖第三方----------------------------------
 THIRPARTY_LIB_PATH = $$THIRPARTY_PATH/lib
 THIRPARTY_INCLUDE_PATH = $$THIRPARTY_PATH/include

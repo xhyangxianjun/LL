@@ -13,15 +13,18 @@ TEMPLATE = app
 
 include(../common.pri)
 
-message($$LIB_PATH)
+LIBS += -L$$LIB_PATH -lCore -lNetwork
 
-LIBS += -L$$LIB_PATH -lCore
+
+INCLUDEPATH += $$BASE_SRC_PATH
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    mainapplication.cpp
+    mainapplication.cpp \
+    test.cpp
 
 HEADERS  += mainwindow.h \
-    mainapplication.h
+    mainapplication.h \
+    test.h
 
 FORMS    += mainwindow.ui

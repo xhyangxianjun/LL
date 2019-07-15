@@ -16,11 +16,12 @@ include(../../common.pri)
 DEFINES += NETWORK_LIBRARY
 
 SOURCES += httpclient.cpp \
-    httpitem.cpp
+    httprequest.cpp
 
 HEADERS += httpclient.h\
         network_global.h \
-    httpitem.h
+    httpdefs.h \
+    httprequest.h
 
 unix {
     target.path = /usr/lib

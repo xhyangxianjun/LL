@@ -4,6 +4,10 @@
 #include <QApplication>
 
 #include "mainwindow.h"
+#include "Network/httpclient.h"
+
+//test
+#include "test.h"
 
 MainApplication::MainApplication()
 {
@@ -26,11 +30,17 @@ int MainApplication::onInit(QApplication *app)
     MainWindow w;
     w.show();
 
+    Test t;
+    t.testHttp();
+
     return app->exec();
 }
 
 int MainApplication::onExit()
 {
+    //清理依赖Application
+    HttpClient::instance()->unInit();
+
     return 0;
 }
 

@@ -1,4 +1,8 @@
-TEMPLATE = aux
+QT += core gui
+
+TEMPLATE = lib
+
+include(../common.pri)
 
 HEADERS += \
     micro.h \
@@ -8,3 +12,6 @@ HEADERS += \
     values.h \
     dimens.h \
     typedefines.h
+
+SOURCES += \
+    constants.cpp

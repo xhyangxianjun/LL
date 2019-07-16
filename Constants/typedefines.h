@@ -3,7 +3,7 @@
 #include <intsafe.h>
 #include <limits.h>
 
-typedef unsigned int   ReqId;
+typedef  int   ReqId;
 typedef  int                  ErrorCode;
 
 #define INVALID_REQID   -1

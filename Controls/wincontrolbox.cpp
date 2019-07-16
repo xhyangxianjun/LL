@@ -7,7 +7,7 @@
 #include <QApplication>
 
 WinControlBox::WinControlBox(QWidget* parent,QWidget* controlWindow,QString instName)
-    :QWidget(parent),
+    :BaseWidget(parent),
       m_controlWindow(controlWindow),
       m_isMaximized(false),
       m_controlFlags(WinControlBox::WindowDefaultFlags)

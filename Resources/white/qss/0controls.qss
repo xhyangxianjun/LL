@@ -1,0 +1,13 @@
+﻿
+/**W-----
+* WinControlBox
+*/
+WinControlBox
+{
+background-color:blue;
+}
+MainTitleBar
+{
+background-color:red;
+}
+

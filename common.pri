@@ -8,7 +8,7 @@ THIRPARTY_PATH = $$PWD/ThirdParty
 
 BASE_SRC_PATH =  $$SRC_ROOT/Base
 
-#依赖第三方----------------------------------
+#依赖第三fang3---------------------------------
 THIRPARTY_LIB_PATH = $$THIRPARTY_PATH/lib
 THIRPARTY_INCLUDE_PATH = $$THIRPARTY_PATH/include
 
@@ -36,7 +36,12 @@ DLLDESTDIR = $$BIN_PATH
 
 #全局的配置
 INCLUDEPATH +=  $$PWD\
-     $$SRC_ROOT/Constants
+     $$SRC_ROOT/Constants\
+     $$SRC_ROOT/Base
+
+HEADERS +=
+
+SOURCES +=
 
 
 

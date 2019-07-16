@@ -1,21 +1,17 @@
 ﻿#include "mainapplication.h"
 
-#include <QSharedMemory>
-#include <QApplication>
+#include <QDebug>
 
-#include "mainwindow.h"
+#include <QSharedMemory>
 #include "Network/httpclient.h"
 
-//test
-#include "test.h"
-
-MainApplication::MainApplication()
+MainApplication::MainApplication(int &argc, char **argv)
+    :Application(argc,argv)
 {
 
 }
 
-
-int MainApplication::onInit(QApplication *app)
+int MainApplication::onInit()
 {
     //单例启动
     QSharedMemory shared_memory;
@@ -26,21 +22,13 @@ int MainApplication::onInit(QApplication *app)
     if(!shared_memory.create(1))
         return -1;
 
-    //初始化程序--------------------
-    MainWindow w;
-    w.show();
-
-    Test t;
-    t.testHttp();
-
-    return app->exec();
+    return this->exec();
 }
 
 int MainApplication::onExit()
 {
     //清理依赖Application
     HttpClient::instance()->unInit();
-
     return 0;
 }
 

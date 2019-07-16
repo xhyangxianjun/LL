@@ -1,6 +1,8 @@
-#include "maintitlebar.h"
+﻿#include "maintitlebar.h"
 
-MainTitleBar::MainTitleBar()
+
+MainTitleBar::MainTitleBar(QWidget *parent)
+    :TitleBar(parent)
 {
-
+    createTitleBar();
 }

@@ -1,33 +1,48 @@
 ﻿#include "application.h"
 
 #include <QApplication>
+#include <QDebug>
 
-Application::Application(QObject *parent)
-    :QObject(parent),m_app(0)
+#include "event.h"
+
+
+QMap<QString,QObject* > Application::sObjectMap = QMap<QString,QObject* >();
+Application::Application(int &argc, char **argv)
+    :QApplication(argc,argv)
 {
-
+    connect(this,SIGNAL(aboutToQuit()),this,SLOT(slotAboutToQuit()));
 }
 
-Application::~Application()
+int Application::initApp()
 {
-    if(m_app){
-        delete m_app;
-        m_app = NULL;
-    }
-}
-
-int Application::initApp(int argc, char *argv[])
-{
-    //创建 APP实例，绑定退出事件
-    m_app = new QApplication(argc,argv);
-    connect(m_app,SIGNAL(aboutToQuit()),this,SLOT(slotAboutToQuit()));
-
     //调用初始化函数，用于用户数据初始化
-    int ret  = onInit(m_app);
+    int ret  = onInit();
     if(ret != 0)
         return ret;
 
     return afterExit();
+}
+
+void Application::registerObject(const QString &key, QObject *object)
+{
+    sObjectMap.insert(key,object);
+}
+
+bool Application::send(const QString &objName, Event *event)
+{
+    QObject *obj = sObjectMap.value(objName);
+    if(obj){
+     return  Application::sendEvent(obj,event);
+    }
+    return true;
+}
+
+void Application::post(const QString &objName, Event *event)
+{
+    QObject *obj = sObjectMap.value(objName);
+    if(obj){
+        Application::postEvent(obj,event);
+    }
 }
 
 void Application::slotAboutToQuit()

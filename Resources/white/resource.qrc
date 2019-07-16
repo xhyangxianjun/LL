@@ -1,1 +1,5 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/">
+        <file>qss/0controls.qss</file>
+    </qresource>
+</RCC>

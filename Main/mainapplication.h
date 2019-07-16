@@ -6,10 +6,10 @@
 class MainApplication : public Application
 {
 public:
-    MainApplication();
+    MainApplication(int &argc, char **argv);
 
 protected:
-    virtual int onInit(QApplication *app) ;   //初始化
+    virtual int onInit() ;   //初始化
     virtual int onExit() ; //正在退出
     virtual int afterExit()  ;//app 退出后
 };

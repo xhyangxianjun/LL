@@ -9,6 +9,8 @@ QT       += widgets network
 TARGET = Component
 TEMPLATE = lib
 
+include(../common.pri)
+
 DEFINES += COMPONENT_LIBRARY
 
 SOURCES += component.cpp

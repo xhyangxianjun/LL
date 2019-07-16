@@ -13,7 +13,9 @@ TEMPLATE = app
 
 include(../common.pri)
 
-LIBS += -L$$LIB_PATH -lCore -lNetwork
+include(maincomponent/maincomponent.pri)
+
+LIBS += -L$$LIB_PATH -lCore -lNetwork  -lControls
 
 
 INCLUDEPATH += $$BASE_SRC_PATH

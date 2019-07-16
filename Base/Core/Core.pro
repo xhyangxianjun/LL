@@ -16,7 +16,10 @@ DEFINES += CORE_LIBRARY
 SOURCES += hostinfo.cpp \
     application.cpp \
     dirhelper.cpp \
-    usermanager.cpp
+    usermanager.cpp \
+    event.cpp \
+    object.cpp \
+    resourcemgr.cpp
 
 HEADERS += hostinfo.h\
         core_global.h \
@@ -25,7 +28,10 @@ HEADERS += hostinfo.h\
     Ioc.hpp \
     NonCopyable.hpp \
     dirhelper.h \
-    usermanager.h
+    usermanager.h \
+    event.h \
+    object.h \
+    resourcemgr.h
 
 unix {
     target.path = /usr/lib

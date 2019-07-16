@@ -3,10 +3,10 @@
 
 #include "controls_global.h"
 
-#include <QWidget>
+#include "basewidget.h"
 
 class QPushButton;
-class CONTROLSSHARED_EXPORT WinControlBox : public QWidget
+class CONTROLSSHARED_EXPORT WinControlBox : public BaseWidget
 {
     Q_OBJECT
 public:

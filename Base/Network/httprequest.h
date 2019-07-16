@@ -38,6 +38,7 @@ protected slots:
 
 private:
     void initSignalSlot();
+    bool prepare();//准备
     static ReqId genReqId(){return (sReqId+1) == MAX_UINT32?0:++sReqId;}
 
     HttpCallBack  *m_callBack;

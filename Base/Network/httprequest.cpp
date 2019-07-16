@@ -36,11 +36,9 @@ void HttpRequest::abort()
 
 ReqId HttpRequest::get(const QString &url)
 {
-    m_reqId = genReqId();
+    if(!prepare()) return INVALID_REQID;
 
-    m_byteArray.clear();
     m_reply = HttpClient::instance()->get(url);
-
     initSignalSlot();
     return  m_reqId;
 }
@@ -67,4 +65,15 @@ void HttpRequest::initSignalSlot()
     connect(m_reply,&QNetworkReply::readyRead,this,&HttpRequest::slotReadyRead);
     //完成回调
     connect(m_reply,&QNetworkReply::finished,this,&HttpRequest::slotFinished);
+}
+
+bool HttpRequest::prepare()
+{
+    //一个请求同时只进行一次
+    if(m_reqId != INVALID_REQID){
+        return false;
+    }
+    m_byteArray.clear();
+    m_reqId = genReqId();
+    return true;
 }

@@ -7,6 +7,8 @@ SUBDIRS += \
     Base \
     ThirdParty \
     Controls\
+    Component \
     Main \
+    Resources
 
 

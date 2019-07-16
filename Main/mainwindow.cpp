@@ -1,14 +1,34 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+﻿#include "mainwindow.h"
+
+#include <QDebug>
+
+#include <QBoxLayout>
+
+#include "Core/application.h"
+#include "maincomponent/maintitlebar.h"
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    FrameLessWidget(parent)
 {
-    ui->setupUi(this);
+    createWg();
+
+    Application::registerObject(Strings::String_MainWindow,this);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+
 }
+
+void MainWindow::createWg()
+{
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->setContentsMargins(0,0,0,0);
+    //标题栏
+    MainTitleBar    *titleBar = new MainTitleBar(this);
+    mainLayout->addWidget(titleBar);
+
+    mainLayout->addStretch(1);
+}
+
+
